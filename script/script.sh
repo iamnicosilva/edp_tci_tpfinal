@@ -1,6 +1,6 @@
 #!/bin/bash
 
-SYNC="sync.txt"
+SYNC="sync/sync.txt"
 SYNC_OLD=$(stat -c %y $SYNC)
 
 while (true)
