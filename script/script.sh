@@ -2,6 +2,11 @@
 
 SYNC="sync/sync.txt"
 SYNC_OLD=$(stat -c %y $SYNC)
+
+[[ $URL ]] || URL=127.0.0.1
+[[ $PORT ]] || PORT=5000
+[[ $MONEDA ]] || MONEDA=usd
+
  
 while (true)
 do
@@ -11,8 +16,8 @@ do
 #	echo $SYNC_NEW
 	if [[ $SYNC_NEW != $SYNC_OLD ]]
 	then
-		COMPRA=$(curl 127.0.0.1:5000/usd 2>/dev/null | ./jq .compra)
-		VENTA=$(curl 127.0.0.1:5000/usd 2>/dev/null | ./jq .venta)
+		COMPRA=$(curl $URL:$PORT/$MONEDA 2>/dev/null | ./jq .compra)
+		VENTA=$(curl $URL:$PORT/$MONEDA 2>/dev/null | ./jq .venta)
 		FECHA=$(date +%F_%H:%M)
 		echo "$FECHA, $COMPRA, $VENTA" >> historico.txt
 		SYNC_OLD=$SYNC_NEW
