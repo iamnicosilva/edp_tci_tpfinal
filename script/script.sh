@@ -19,7 +19,7 @@ do
 		COMPRA=$(curl $URL:$PORT/$MONEDA 2>/dev/null | ./jq .compra)
 		VENTA=$(curl $URL:$PORT/$MONEDA 2>/dev/null | ./jq .venta)
 		FECHA=$(date +%F_%H:%M)
-		echo "$FECHA, $COMPRA, $VENTA" >> historico.txt
+		echo "$FECHA, $COMPRA, $VENTA" >> sync/historico.txt
 		SYNC_OLD=$SYNC_NEW
 	fi
 done
