@@ -16,8 +16,8 @@ do
 #	echo $SYNC_NEW
 	if [[ $SYNC_NEW != $SYNC_OLD ]]
 	then
-		COMPRA=$(curl $URL:$PORT/$MONEDA 2>/dev/null | ./jq .compra)
-		VENTA=$(curl $URL:$PORT/$MONEDA 2>/dev/null | ./jq .venta)
+		COMPRA=$(curl $URL:$PORT/$MONEDA 2>/dev/null | jq .compra)
+		VENTA=$(curl $URL:$PORT/$MONEDA 2>/dev/null | jq .venta)
 		FECHA=$(date +%F_%H:%M)
 		echo "$FECHA, $COMPRA, $VENTA" >> sync/historico.txt
 		SYNC_OLD=$SYNC_NEW
