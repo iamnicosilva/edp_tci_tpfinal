@@ -1,0 +1,9 @@
+[Unit]
+Description=Service daemon by service_tpedp.timer at cotizacion-bna tp edp tci TUIA
+
+[Service]
+Type=simple
+ExecStart=/bin/bash -c "echo 1 > #REPLACEME"
+
+[Install]
+WantedBy=multi-user.target
