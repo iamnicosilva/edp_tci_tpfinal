@@ -11,3 +11,4 @@ systemctl daemon-reload
 systemctl start service_tpedp.timer
 
 docker-compose up -d --build
+
