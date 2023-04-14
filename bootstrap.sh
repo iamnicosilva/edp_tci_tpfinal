@@ -50,19 +50,37 @@ show_menu() {
 	echo "-e: Estado de aplicación"
 }
 
-
-while getops "iscue" opt
-do
-case $opt in
-	i) install_app
-	s) stop_app
-	c) continue_app
-	u) stop_app
-	uninstall_app
-	e) status_app
-	\?) echo "Opción inválida - argumento requerido"
+if [ $# -eq 0 ]; then
+	echo "Debe especificar al menos un argumento"
 	show_menu
 	exit 1
+fi
+
+
+while getopts ":iscue" opt
+do
+case $opt in
+	i)
+	install_app
+	;;
+	s)
+	stop_app
+	;;
+	c)
+	continue_app
+	;;
+	u)
+	stop_app
+	uninstall_app
+	;;
+	e)
+	status_app
+	;;
+	\?)
+	echo "Opción inválida"
+	show_menu
+	exit 1
+	;;
 esac
 done
 
